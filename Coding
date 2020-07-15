@@ -1,1 +1,255 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+
+class shapes
+{
+    public:
+    int rows;
+    public:
+    void input()
+    {
+        cout<<"Enter the  rows size \n";
+        cin>>rows;
+        
+    }
+};
+
+class rect_shape : public shapes
+{
+    int i,j;
+    public:
+    void draw_rect()
+    {
+        for (i=0;i<rows;i++)
+        {
+            
+        
+            for(j=0;j<(5*rows);j++)
+            {
+        
+                if (j==0||j==(5*rows-1)||i==0||i==rows-1 )
+                {
+                    
+                    cout<<"*";
+                }
+                else
+                {
+                    cout<<" ";
+                }
+            }
+            cout<<"\n";
+            
+        }
+        
+    cout<<"----------------------------------------------------------\n";
+        cout<<"[  you are printing rectangle shape  ]\n";
+        cout<<"    [ it has a  4  sides ]\n";
+        cout<<"[ this shape contains "<<rows<<" rows and "<<5*rows<<" coloums ]\n";
+    }
+};
+
+
+
+
+class tri_shape : public shapes
+{
+    int i,j;
+    public:
+    void draw_tri()
+    {
+        for (i=1;i<=rows;i++)
+        {
+            
+            for (j=rows;j>i;j--)
+            {
+                    cout<<" ";
+            }
+                
+            for(j=1;j<=((2*i)-1);j++)
+            {
+                
+                    cout<<"*";
+                
+            }
+            cout<<"\n";
+        }
+        
+    cout<<"----------------------------------------------------------\n";
+        cout<<"[  you are printing Triangle shape  ]\n";
+        cout<<"    [ it has a  3  sides ]\n";
+        cout<<"[ this shape contains "<<rows<<" rows and "<< (rows*2)-1<<" coloums ]\n";
+    }
+};
+
+
+
+
+class squ_shape : public shapes
+{
+    int i,j;
+    public:
+    void draw_squ()
+    {
+        for (i=0;i<rows;i++)
+        {
+            for(j=0;j<rows;j++)
+            {
+                if (j==0||j==rows-1||i==0||i==rows-1)
+                {
+                    cout<<"*";
+            
+                }
+                else
+                {
+                    cout<<" ";
+                }
+                
+            }
+            cout<<"\n";
+        }
+        
+    cout<<"----------------------------------------------------------\n";
+        cout<<"[  you are printing square shape  ]\n";
+        cout<<"    [ it has a  4  sides ]\n";
+        cout<<"[ this shape contains "<<rows<<" rows and "<<rows<<" coloums ]\n";
+    }
+};
+
+
+
+
+class cir_shape : public shapes
+{
+    int i,j;
+    float d;
+    public:
+    void draw_cir()
+    {
+        for (i=0;i<=2*rows;i++)
+        {
+        for(j=0;j<=2*rows;j++)
+            {
+                d = sqrt((i - rows) * (i - rows) +  (j - rows) * (j - rows)); 
+                if (d > rows - 0.5 && d < rows + 0.5)  
+                {
+                   cout << "*";
+                }
+                else
+                {
+                    cout << " "; 
+        
+                }
+            }
+       cout<<"\n";
+        }
+    cout<<"----------------------------------------------------------\n";
+        cout<<"[  you are printing Circle shape  ]\n";
+        cout<<"    [ Area of this circle is = "<<((rows*rows)*3.14)<<"]\n";
+        cout<<"    [ Circumference of this circle is = "<<2*3.14*rows<<"]\n";
+        cout<<"    [ Diameter of this circle is = "<<2*rows<<"]\n";
+        
+    }
+};
+
+
+class rom_shape : public shapes
+{
+    int i,j;
+    public:
+    void draw_rom()
+    {
+        for (i=1;i<=rows;i++)
+        {
+            
+            for (j=rows;j>i;j--)
+            {
+                    cout<<" ";
+            }
+                
+            for(j=1;j<=((2*i)-1);j++)
+            {
+                
+                    cout<<"*";
+                
+            }
+            cout<<"\n";
+        }
+    
+        for (i=rows;i>=0;i--)
+        {
+            
+            for (j=rows;j>i;j--)
+            {
+                    cout<<" ";
+            }
+                
+            for(j=1;j<=((2*i)-1);j++)
+            {
+                
+                    cout<<"*";
+            }
+            cout<<"\n";
+        }
+        cout<<"----------------------------------------------------------\n";
+        cout<<"[  you are printing Rombus shape  ]\n";
+        cout<<"    [ it has a  4  sides ]\n";
+        cout<<"[ this shape contains "<<(2*rows)<<" rows and "<< (rows*2)-1<<" coloums ]\n";
+    }
+};
+
+
+int main()
+{
+    
+    int n;
+    cout<<" press 1 for  SQUARE\n";
+    cout<<" press 2 for  CIRCLE\n";
+    cout<<" press 3 for  RECTANGLE\n";
+    cout<<" press 4 for  TRIANGLE\n";
+    cout<<" press 5 for  ROMBUS\n";
+    cout<<"Enter your Choice\n";
+    cin>>n;
+    
+    switch(n)
+    {
+        case 1:
+        squ_shape square;
+        square.input();
+        square.draw_squ();
+        break;
+        
+        case 2:
+        cir_shape circle;
+        circle.input();
+        circle.draw_cir();
+        break;
+        
+        case 3:
+        rect_shape rectangle;
+        rectangle.input();
+        rectangle.draw_rect();
+        break;
+        
+        case 4:
+        tri_shape triangle;
+        triangle.input();
+        triangle.draw_tri();
+        break;
+        
+        
+        case 5:
+        rom_shape rombus;
+        rombus.input();
+        rombus.draw_rom();
+        break;
+        
+        default :
+        cout<<" invalid input\n";
+        break;
+    }
+        return 0;
+}
+
 
